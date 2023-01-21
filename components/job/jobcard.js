@@ -1,43 +1,11 @@
 import Link from "next/link";
+import "../../app/globals.css";
 
-// import clientPromise from "@/lib/mongodb";
-
-// async function getData() {
-//   try {
-//     const client = await clientPromise;
-//     const db = client.db("sample_mflix");
-
-//     const movies = await db.collection("movies").find({}).limit(5).toArray();
-
-//     res.json(movies);
-//   } catch (e) {
-//     console.error(e);
-//     throw new Error(e).message;
-//   }
-// }
-
-// async function getData() {
-//   const res = await fetch("https://api.example.com/...");
-//   // The return value is *not* serialized
-//   // You can return Date, Map, Set, etc.
-
-//   // Recommendation: handle errors
-//   if (!res.ok) {
-//     // This will activate the closest `error.js` Error Boundary
-//     throw new Error("Failed to fetch data");
-//   }
-
-//   return res.json();
-// }
-
-export default async function JobCard(props) {
-  const data = await getData();
-
-  console.log(data);
+export default async function JobCard() {
   return (
     <div className="hero h-4/5 bg-base-200">
       <div className="hero-content">
-        <div className="card  w-96  h-36 bg-base-100 shadow-xl">
+        <div className="card  w-96  h-50 bg-base-100 shadow-xl">
           <div className="card-body items-center text-center">
             <div>
               <p className="text-sm text-gray-600 flex">
@@ -80,5 +48,25 @@ export default async function JobCard(props) {
         </div>
       </div>
     </div>
+    // <div className="hero h-4/5 bg-base-200">
+    //   <div className="hero-content">
+    //     <div className="card w-96 bg-base-100 shadow-xl">
+    //       <figure className="px-10 pt-10">
+    //         <img
+    //           src="https://placeimg.com/400/225/arch"
+    //           alt="Shoes"
+    //           className="rounded-xl"
+    //         />
+    //       </figure>
+    //       <div className="card-body items-center text-center">
+    //         <h2 className="card-title">Shoes!</h2>
+    //         <p>If a dog chews shoes whose shoes does he choose?</p>
+    //         <div className="card-actions">
+    //           <button className="btn btn-primary">Buy Now</button>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
   );
 }

@@ -4,7 +4,6 @@ export default function JobList() {
   return (
     <>
       <JobCard />
-      <JobCard />
     </>
   );
 }
