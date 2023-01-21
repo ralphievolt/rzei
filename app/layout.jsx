@@ -1,4 +1,5 @@
 import "./globals.css";
+import Link from "next/link";
 
 export default function RootLayout({ children }) {
   return (
@@ -7,7 +8,9 @@ export default function RootLayout({ children }) {
       <body>
         <div className="navbar bg-base-100">
           <div className="flex-1">
-            <a className="btn btn-ghost normal-case text-xl">rzei</a>
+            <Link href="/" className="btn btn-ghost normal-case text-xl">
+              ēzēir
+            </Link>
           </div>
           <div className="flex-none gap-2">
             <div className="form-control">
