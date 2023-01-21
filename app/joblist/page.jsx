@@ -5,8 +5,6 @@ export default function JobList() {
     <>
       <JobCard />
       <JobCard />
-      <JobCard />
-      <JobCard />
     </>
   );
 }
