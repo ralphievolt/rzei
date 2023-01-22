@@ -102,10 +102,10 @@ export default function DeliveryCard({ details }) {
 
           <button
             type="submit"
-            className="btn btn-outline btn-secondary btn-wide mt-4 btn-sm"
+            className="btn btn-outline btn-secondary mt-4 btn-sm"
             // disabled={clicked}
           >
-            Submit
+            Click to scan QR Code
           </button>
         </div>
       </div>

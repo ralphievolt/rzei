@@ -13,7 +13,7 @@ export default async function JobList() {
       <div className="hero min-h-screen bg-base-200 content-start ">
         <div className="hero-content text-center">
           <div className="max-w-md">
-            <h1 className="text-3xl font-semibold">No Jobs Dispatched</h1>
+            <h1 className="text-3xl font-semibold">No Jobs Available</h1>
           </div>
         </div>
       </div>
