@@ -73,7 +73,7 @@ export default function DeliveryCard({ details }) {
           </div>
           <div>
             <label className="block text-gray-700 text-sm ">
-              Vacform Tooling Receiver
+              Vacforming Receiver
             </label>
             <input
               type="text"

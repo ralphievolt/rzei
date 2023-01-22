@@ -11,8 +11,7 @@ export default function DispatchCard({ details }) {
   const [clicked, setClicked] = React.useState(false);
 
   const onSubmit = async (data) => {
-    // setClicked(true);
-
+    setClicked(true);
     try {
       let response = await fetch("http://localhost:3000/api/dispatchJob", {
         method: "POST",
@@ -25,7 +24,7 @@ export default function DispatchCard({ details }) {
       response = await response.json();
 
       alert("Job dispatched successfully");
-      // setClicked(false);
+      setClicked(false);
       reset((formValues) => ({
         ...formValues,
         lastName: "test",
@@ -88,7 +87,7 @@ export default function DispatchCard({ details }) {
           <button
             type="submit"
             className="btn btn-outline btn-secondary btn-wide mt-4 btn-sm"
-            // disabled={clicked}
+            disabled={clicked}
           >
             Submit
           </button>

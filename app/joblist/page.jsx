@@ -21,7 +21,7 @@ export default async function JobList() {
   return (
     <div className="hero min-h-screen bg-base-200 content-start ">
       <div className="hero-content text-center">
-        <div className="max-w-md">
+        <div className="max-w-md space-y-4">
           {jobs.map((job, idx) => (
             <JobCard details={job} />
           ))}
