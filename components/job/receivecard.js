@@ -41,18 +41,10 @@ export default async function ReceiveCard({ details }) {
           <option>Parts Returned</option>
         </select>
 
-        <div className=" pt-4 ">
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
-            Jasmine
-          </span>
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 ">
-            Ato
-          </span>
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 ">
-            Ralph
-          </span>
-        </div>
-
+        <select className="select select-lg  w-full max-w-xs text-secondary text-center">
+          <option>Vacforming</option>
+          <option>Machine Shop</option>
+        </select>
         <input
           type="text"
           placeholder="Receiver's Name"
