@@ -31,7 +31,10 @@ export default function DeliveryCard({ details }) {
                 d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
               ></path>
             </svg>
-            {date.format(new Date(details.last_updated), "ddd, MMM DD YYYY")}
+            {date.format(
+              new Date(details.last_updated),
+              "ddd, MMM DD YYYY h:mm A"
+            )}
           </p>
         </div>
 
@@ -43,7 +46,7 @@ export default function DeliveryCard({ details }) {
             <input
               type="number"
               className="input input-bordered w-full max-w-xs mt-2 input-sm"
-              value={100}
+              value={details.delivery_percentage}
             />
           </div>
           <div>
@@ -53,7 +56,7 @@ export default function DeliveryCard({ details }) {
             <input
               type="number"
               className="input input-bordered w-full max-w-xs mt-2 input-sm"
-              value={8}
+              value={details.vacform_count}
             />
           </div>
         </div>
@@ -80,8 +83,12 @@ export default function DeliveryCard({ details }) {
           </div>
         </div>
         <div>
-          <select className="select select-bordered w-full max-w-xs mt-2 select-sm">
+          <select
+            className="select select-bordered w-full max-w-xs mt-2 select-sm"
+            value={details.delivery_status}
+          >
             <option>For Delivery</option>
+            <option>Dispatched</option>
             <option>Received</option>
             <option>Parts Withdrawn</option>
             <option>Parts Returned</option>
@@ -90,6 +97,7 @@ export default function DeliveryCard({ details }) {
             type="text"
             placeholder="Remarks"
             className="input input-bordered mt-2  w-full input-sm"
+            value={details.remarks}
           />
 
           <button

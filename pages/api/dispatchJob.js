@@ -23,6 +23,8 @@ export default async (req, res) => {
       delivery_percentage,
       vacform_count,
       last_updated: new Date(),
+      receiver_machine_shop: "",
+      receiver_vacforming: "",
       history: [
         {
           timestamp: new Date(),
