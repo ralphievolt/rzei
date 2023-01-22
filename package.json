@@ -11,6 +11,7 @@
   "dependencies": {
     "@next/font": "13.1.4",
     "daisyui": "^2.47.0",
+    "date-and-time": "^2.4.2",
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.4",
     "mongodb": "^4.13.0",

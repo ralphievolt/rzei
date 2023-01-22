@@ -1,22 +1,19 @@
 import JobCard from "@/components/job/jobcard";
 
 async function getData() {
-  let res = await fetch("https://jsonplaceholder.typicode.com/todos");
+  let res = await fetch("http://localhost:3000/api/getMovies");
 
   console.log(res.json);
   return res.json();
 }
 
 export default async function JobList() {
-  const table = await getData();
+  const jobs = await getData();
   return (
     <>
-      <JobCard />
-      <ul>
-        {table.map((todo) => (
-          <li key={todo.id}>{todo.title}</li>
-        ))}
-      </ul>
+      {jobs.map((job, idx) => (
+        <JobCard details={job} />
+      ))}
     </>
   );
 }

@@ -1,7 +1,8 @@
 import Link from "next/link";
+import date from "date-and-time";
 import "../../app/globals.css";
 
-export default async function JobCard() {
+export default async function JobCard({ details }) {
   return (
     <div className="hero h-4/5 bg-base-200">
       <div className="hero-content">
@@ -24,14 +25,14 @@ export default async function JobCard() {
                     d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
                   ></path>
                 </svg>
-                Jan 23, 2023
+                {date.format(new Date(details.lastupdated), "ddd, MMM DD YYYY")}
               </p>
             </div>
             <h1 className="card-title text-3xl ">
-              <Link href="/"> 751234</Link>||{" "}
+              <Link href="/"> {details.year}</Link>||{" "}
               <span className="text-secondary">100%</span>
             </h1>
-            <p className="text-xl">URBAN DECAY</p>
+            <p className="text-xl">{details.title}</p>
             <p className="text-lg text-secondary">For Delivery</p>
             <div className=" pt-4 ">
               <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
