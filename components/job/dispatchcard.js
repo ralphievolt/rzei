@@ -12,27 +12,26 @@ export default function DispatchCard({ details }) {
 
   const onSubmit = async (data) => {
     // setClicked(true);
-    if (clicked) {
-      try {
-        let response = await fetch("http://localhost:3000/api/dispatchJob", {
-          method: "POST",
-          body: JSON.stringify(data),
-          headers: {
-            Accept: "application/json, text/plain, */*",
-            "Content-Type": "application/json",
-          },
-        });
-        response = await response.json();
 
-        console.log("Job dispatched successfully");
-        // setClicked(false);
-        reset((formValues) => ({
-          ...formValues,
-          lastName: "test",
-        }));
-      } catch (errorMessage) {
-        console.log(errorMessage);
-      }
+    try {
+      let response = await fetch("http://localhost:3000/api/dispatchJob", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+        },
+      });
+      response = await response.json();
+
+      alert("Job dispatched successfully");
+      // setClicked(false);
+      reset((formValues) => ({
+        ...formValues,
+        lastName: "test",
+      }));
+    } catch (errorMessage) {
+      alert(errorMessage);
     }
   };
 
@@ -72,6 +71,15 @@ export default function DispatchCard({ details }) {
             placeholder="Enter Delivery Percentage"
             className="input input-bordered w-full max-w-xs mt-2"
             {...register("delivery_percentage", {
+              required: true,
+              maxLength: 3,
+            })}
+          />
+          <input
+            type="number"
+            placeholder="Enter Number of Vacform"
+            className="input input-bordered w-full max-w-xs mt-2"
+            {...register("vacform_count", {
               required: true,
               maxLength: 3,
             })}

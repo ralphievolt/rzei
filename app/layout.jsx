@@ -8,7 +8,7 @@ export default function RootLayout({ children }) {
       <body>
         <div className="navbar bg-base-100">
           <div className="flex-1">
-            <Link href="/" className="btn btn-ghost normal-case text-xl">
+            <Link href="/" className="normal-case text-xl ">
               ēzēir
             </Link>
           </div>
@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
               <input
                 type="text"
                 placeholder="Search"
-                className="input input-bordered"
+                className="input input-bordered input-sm"
               />
             </div>
             <div className="dropdown dropdown-end">

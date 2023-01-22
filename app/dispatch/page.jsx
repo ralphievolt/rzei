@@ -1,4 +1,4 @@
-import DispatchCard from "@/components/job/dispatch";
+import DispatchCard from "@/components/job/dispatchcard";
 
 export default async function JobList() {
   return (

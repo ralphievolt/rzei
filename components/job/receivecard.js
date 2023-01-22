@@ -1,11 +1,18 @@
+"use client";
 import Link from "next/link";
 import date from "date-and-time";
 import "../../app/globals.css";
 
-export default async function ReceiveCard({ details }) {
+export default function ReceiveCard({ details }) {
   return (
     <div className="card  w-full md:w-96  h-50 bg-base-100 shadow-xl">
       <div className="card-body items-center text-center">
+        <h1 className="text-xl font-semibold text-secondary ">
+          Receiving Transaction
+        </h1>
+        <div className="divider mt-0 mb-0"></div>
+        <h1 className="card-title text-2xl ">{details.job_number}</h1>
+        <p className="text-xl font-bold">{details.brand}</p>
         <div>
           <p className="text-sm text-gray-600 flex">
             <svg
@@ -23,41 +30,75 @@ export default async function ReceiveCard({ details }) {
                 d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
               ></path>
             </svg>
-            {date.format(new Date(), "ddd, MMM DD YYYY")}
+            {date.format(new Date(details.last_updated), "ddd, MMM DD YYYY")}
           </p>
         </div>
-        <h1 className="card-title text-2xl ">
-          <Link href="/receive" className="text-secondary">
-            {" "}
-            {details.job_number}
-          </Link>
-          || {details.delivery_percentage} %
-        </h1>
-        <p className="text-xl font-bold">{details.brand}</p>
-        <select className="select select-lg  w-full max-w-xs text-secondary text-center">
-          <option>For Delivery</option>
-          <option>Received</option>
-          <option>Parts Withdrawn</option>
-          <option>Parts Returned</option>
-        </select>
 
-        <select className="select select-lg  w-full max-w-xs text-secondary text-center">
-          <option>Vacforming</option>
-          <option>Machine Shop</option>
-        </select>
-        <input
-          type="text"
-          placeholder="Receiver's Name"
-          className="input input-bordered w-full max-w-xs mt-2"
-        />
-        <input
-          type="text"
-          placeholder="Remarks"
-          className="input input-bordered w-full max-w-xs mt-3"
-        />
-        <button className="btn btn-outline btn-secondary btn-wide mt-4">
-          Scan QR Code Key To Save
-        </button>
+        <div className="flex flex-row  space-x-2">
+          <div>
+            <label className="block text-gray-700 text-sm ">
+              Delivery Percentage
+            </label>
+            <input
+              type="number"
+              className="input input-bordered w-full max-w-xs mt-2 input-sm"
+              value={100}
+            />
+          </div>
+          <div>
+            <label className="block text-gray-700 text-sm ">
+              Vacform Count
+            </label>
+            <input
+              type="number"
+              className="input input-bordered w-full max-w-xs mt-2 input-sm"
+              value={8}
+            />
+          </div>
+        </div>
+        <div className="flex flex-row  space-x-2">
+          <div>
+            <label className="block text-gray-700 text-sm ">
+              Machine Shop Receiver
+            </label>
+            <input
+              type="text"
+              className="input input-bordered w-full max-w-xs mt-2 input-sm"
+              value={"Someone"}
+            />
+          </div>
+          <div>
+            <label className="block text-gray-700 text-sm ">
+              Vacform Tooling Receiver
+            </label>
+            <input
+              type="text"
+              className="input input-bordered w-full max-w-xs mt-2 input-sm"
+              value={"Rhey"}
+            />
+          </div>
+        </div>
+        <div>
+          <select className="select select-bordered w-full max-w-xs mt-2 select-sm">
+            <option>For Delivery</option>
+            <option>Received</option>
+            <option>Parts Withdrawn</option>
+            <option>Parts Returned</option>
+          </select>
+          <input
+            type="text"
+            placeholder="Remarks"
+            className="input input-bordered mt-2  w-full input-sm"
+          />
+
+          <button
+            type="submit"
+            className="btn btn-outline btn-secondary btn-wide mt-4 btn-sm"
+            // disabled={clicked}
+          >
+            Submit
+          </button>
+        </div>
       </div>
     </div>
   );

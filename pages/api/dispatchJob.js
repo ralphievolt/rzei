@@ -10,6 +10,7 @@ export default async (req, res) => {
       project_manager,
       model_maker,
       delivery_percentage,
+      vacform_count,
     } = req.body;
 
     const job = await db.collection("jobs").insertOne({
@@ -20,6 +21,7 @@ export default async (req, res) => {
       delivered_by: "N/A",
       delivery_status: "Dispatched",
       delivery_percentage,
+      vacform_count,
       last_updated: new Date(),
       history: [
         {
