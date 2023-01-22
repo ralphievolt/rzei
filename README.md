@@ -28,4 +28,4 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 - Use QR Code scanning to sign delivery
 - Easy review of delivery history including parts withdrawal and returning of parts using timeline tailwind css
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Collaboration are so much welcome as I am not so good at UI design =)
