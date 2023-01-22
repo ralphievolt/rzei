@@ -27,7 +27,7 @@ export default async function JobCard({ details }) {
           </p>
         </div>
         <h1 className="card-title text-2xl ">
-          <Link href="/receive" className="text-secondary">
+          <Link href="/delivery" className="text-secondary">
             {details.job_number}
           </Link>
           || {details.delivery_percentage} %

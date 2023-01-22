@@ -50,13 +50,13 @@ export default function RootLayout({ children }) {
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
               <li>
-                <a>Dispatch</a>
+                <a href="/dispatch">Dispatch</a>
               </li>
               <li tabIndex={0}>
-                <a>Delivery</a>
+                <a href="/delivery">Delivery</a>
               </li>
               <li>
-                <a>Jobs</a>
+                <a href="/joblist">Jobs</a>
               </li>
             </ul>
           </div>
@@ -71,9 +71,7 @@ export default function RootLayout({ children }) {
         {children}
         <footer className="footer footer-center p-4 bg-base-300 text-base-content fixed inset-x-0 bottom-0">
           <div>
-            <p>
-              Copyright © 2023 - All right reserved by Model Shop Department
-            </p>
+            <p>Copyright © 2023 - All right reserved by Model Shop</p>
           </div>
         </footer>
       </body>

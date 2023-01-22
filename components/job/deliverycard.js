@@ -3,18 +3,19 @@ import Link from "next/link";
 import date from "date-and-time";
 import "../../app/globals.css";
 
-export default function ReceiveCard({ details }) {
+export default function DeliveryCard({ details }) {
   return (
-    <div className="card  w-full md:w-96  h-50 bg-base-100 shadow-xl">
+    <div className="card  w-full md:w-96  h-fit bg-base-100 shadow-xl">
       <div className="card-body items-center text-center">
         <h1 className="text-xl font-semibold text-secondary ">
-          Receiving Transaction
+          Delivery Transaction
         </h1>
         <div className="divider mt-0 mb-0"></div>
-        <h1 className="card-title text-2xl ">{details.job_number}</h1>
-        <p className="text-xl font-bold">{details.brand}</p>
+        <p className="text-2xl font-bold">{details.brand}</p>
+
+        <h1 className="card-title text-xl ">{details.job_number}</h1>
         <div>
-          <p className="text-sm text-gray-600 flex">
+          <p className=" text-gray-600 flex">
             <svg
               className=" text-gray-500 w-5 h-5 mr-2"
               fill="none"

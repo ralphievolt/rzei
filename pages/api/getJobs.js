@@ -5,7 +5,7 @@ export default async (req, res) => {
     const client = await clientPromise;
     const db = client.db("model_shop");
 
-    const jobs = await db.collection("jobs").find({}).limit(2).toArray();
+    const jobs = await db.collection("jobs").find({}).toArray();
 
     res.json(jobs);
   } catch (e) {
