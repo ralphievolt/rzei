@@ -6,20 +6,21 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
-    <div className="hero h-4/5 bg-base-200">
-      <div className="hero-content">
+    <div className="hero min-h-screen bg-base-200 content-start ">
+      <div className="hero-content text-center">
         <div className="max-w-md">
-          <h1 className="text-5xl font-bold text-secondary">
+          <h1 className="text-5xl font-bold  text-secondary mt-10">
             Paperless Transactions
           </h1>
           <p className="py-6 text-3xl">
             We love saving trees and energy through recycling, but more
             importantly, we enjoy making your transactions more efficient!
           </p>
+
           <Link
             href="/joblist"
             role="button"
-            className="btn btn-outline btn-secondary btn-wide"
+            className="btn btn-secondary btn-outline"
           >
             Get Started
           </Link>

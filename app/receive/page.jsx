@@ -1,4 +1,4 @@
-import JobCard from "@/components/job/jobcard";
+import ReceiveCard from "@/components/job/receivecard";
 
 async function getData() {
   let res = await fetch("http://localhost:3000/api/getMovies");
@@ -13,9 +13,7 @@ export default async function JobList() {
     <div className="hero min-h-screen bg-base-200 content-start ">
       <div className="hero-content text-center">
         <div className="max-w-md">
-          {jobs.map((job, idx) => (
-            <JobCard details={job} />
-          ))}
+          <ReceiveCard details={jobs[0]} />;
         </div>
       </div>
     </div>
