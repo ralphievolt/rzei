@@ -23,14 +23,17 @@ export default async function ReceiveCard({ details }) {
                 d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
               ></path>
             </svg>
-            {date.format(new Date(details.lastupdated), "ddd, MMM DD YYYY")}
+            {date.format(new Date(), "ddd, MMM DD YYYY")}
           </p>
         </div>
-        <h1 className="card-title text-3xl ">
-          <Link href="/"> {details.year}</Link>||{" "}
-          <span className="text-secondary">100%</span>
+        <h1 className="card-title text-2xl ">
+          <Link href="/receive" className="text-secondary">
+            {" "}
+            {details.job_number}
+          </Link>
+          || {details.delivery_percentage} %
         </h1>
-        <p className="text-xl">{details.title}</p>
+        <p className="text-xl font-bold">{details.brand}</p>
         <select className="select select-lg  w-full max-w-xs text-secondary text-center">
           <option>For Delivery</option>
           <option>Received</option>

@@ -23,25 +23,28 @@ export default async function JobCard({ details }) {
                 d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
               ></path>
             </svg>
-            {date.format(new Date(details.lastupdated), "ddd, MMM DD YYYY")}
+            {date.format(new Date(details.last_updated), "ddd, MMM DD YYYY")}
           </p>
         </div>
-        <h1 className="card-title text-3xl ">
-          <Link href="/"> {details.year}</Link>||{" "}
-          <span className="text-secondary">100%</span>
+        <h1 className="card-title text-2xl ">
+          <Link href="/receive" className="text-secondary">
+            {" "}
+            {details.job_number}
+          </Link>
+          || {details.delivery_percentage} %
         </h1>
-        <p className="text-xl">{details.title}</p>
-        <p className="text-lg text-secondary">For Delivery</p>
+        <p className="text-xl font-bold">{details.brand}</p>
+        <p className="text-lg text-secondary">{details.delivery_status}</p>
         <div className=" pt-4 ">
           <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
-            Jasmine
+            {details.project_manager}
           </span>
           <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 ">
-            Ato
+            {details.model_maker}
           </span>
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 ">
-            Ralph
-          </span>
+          {/* <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 ">
+            Ralph / delivered_by
+          </span> */}
         </div>
       </div>
     </div>
