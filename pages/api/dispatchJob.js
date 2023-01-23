@@ -25,6 +25,7 @@ export default async (req, res) => {
       last_updated: new Date(),
       receiver_machine_shop: "",
       receiver_vacforming: "",
+      remarks: "",
       history: [
         {
           timestamp: new Date(),

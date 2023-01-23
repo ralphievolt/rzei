@@ -2,8 +2,23 @@
 import Link from "next/link";
 import date from "date-and-time";
 import "../../app/globals.css";
+import { useForm } from "react-hook-form";
+import React from "react";
 
 export default function DeliveryCard({ details }) {
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      delivery_percentage: details.delivery_percentage,
+      vacform_count: details.vacform_count,
+      receiver_machine_shop: details.receiver_machine_shop,
+      receiver_vacforming: details.receiver_vacforming,
+      delivery_status: details.delivery_status,
+      remarks: details.remarks,
+    },
+  });
+  const onSubmit = async (data) => {
+    console.log(data);
+  };
   return (
     <div className="card  w-full md:w-96  h-fit bg-base-100 shadow-xl">
       <div className="card-body items-center text-center">
@@ -37,77 +52,78 @@ export default function DeliveryCard({ details }) {
             )}
           </p>
         </div>
-
-        <div className="flex flex-row  space-x-2">
-          <div>
-            <label className="block text-gray-700 text-sm ">
-              Delivery Percentage
-            </label>
-            <input
-              type="number"
-              className="input input-bordered w-full max-w-xs mt-2 input-sm"
-              value={details.delivery_percentage}
-            />
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="flex flex-row  space-x-2">
+            <div>
+              <label className="block text-gray-700 text-sm ">
+                Delivery Percentage
+              </label>
+              <input
+                type="number"
+                className="input input-bordered w-full max-w-xs mt-2 input-sm"
+                {...register("delivery_percentage")}
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700 text-sm ">
+                Vacform Count
+              </label>
+              <input
+                type="number"
+                className="input input-bordered w-full max-w-xs mt-2 input-sm"
+                {...register("vacform_count")}
+              />
+            </div>
+          </div>
+          <div className="flex flex-row  space-x-2">
+            <div>
+              <label className="block text-gray-700 text-sm ">
+                Machine Shop Receiver
+              </label>
+              <input
+                type="text"
+                className="input input-bordered w-full max-w-xs mt-2 input-sm"
+                {...register("receiver_machine_shop")}
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700 text-sm ">
+                Vacforming Receiver
+              </label>
+              <input
+                type="text"
+                className="input input-bordered w-full max-w-xs mt-2 input-sm"
+                {...register("receiver_vacforming")}
+              />
+            </div>
           </div>
           <div>
-            <label className="block text-gray-700 text-sm ">
-              Vacform Count
-            </label>
-            <input
-              type="number"
-              className="input input-bordered w-full max-w-xs mt-2 input-sm"
-              value={details.vacform_count}
-            />
-          </div>
-        </div>
-        <div className="flex flex-row  space-x-2">
-          <div>
-            <label className="block text-gray-700 text-sm ">
-              Machine Shop Receiver
-            </label>
+            <select
+              className="select select-bordered w-full max-w-xs mt-2 select-sm"
+              {...register("delivery_status")}
+            >
+              <option>For Delivery</option>
+              <option>Dispatched</option>
+              <option>Received</option>
+              <option>Parts Withdrawn</option>
+              <option>Parts Returned</option>
+            </select>
             <input
               type="text"
-              className="input input-bordered w-full max-w-xs mt-2 input-sm"
-              value={"Someone"}
+              placeholder="Remarks"
+              className="input input-bordered mt-2  w-full input-sm"
+              {...register("remarks")}
             />
-          </div>
-          <div>
-            <label className="block text-gray-700 text-sm ">
-              Vacforming Receiver
-            </label>
-            <input
-              type="text"
-              className="input input-bordered w-full max-w-xs mt-2 input-sm"
-              value={"Rhey"}
-            />
-          </div>
-        </div>
-        <div>
-          <select
-            className="select select-bordered w-full max-w-xs mt-2 select-sm"
-            value={details.delivery_status}
-          >
-            <option>For Delivery</option>
-            <option>Dispatched</option>
-            <option>Received</option>
-            <option>Parts Withdrawn</option>
-            <option>Parts Returned</option>
-          </select>
-          <input
-            type="text"
-            placeholder="Remarks"
-            className="input input-bordered mt-2  w-full input-sm"
-            value={details.remarks}
-          />
 
-          <button
-            type="submit"
-            className="btn btn-outline btn-secondary mt-4 btn-sm"
-            // disabled={clicked}
-          >
-            Click to scan QR Code
-          </button>
-        </div>
+            <button
+              type="submit"
+              className="btn btn-outline btn-secondary mt-4 btn-sm"
+              // disabled={clicked}
+            >
+              Click to scan QR Code
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

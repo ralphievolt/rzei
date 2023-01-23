@@ -24,7 +24,7 @@ export default async function Deliver() {
       <div className="hero-content text-center">
         <div className="max-w-md space-y-4">
           {jobs.map((job, idx) => (
-            <DeliveryCard details={job} />
+            <DeliveryCard details={job} key={idx} />
           ))}
         </div>
       </div>

@@ -23,7 +23,7 @@ export default async function JobList() {
       <div className="hero-content text-center">
         <div className="max-w-md space-y-4">
           {jobs.map((job, idx) => (
-            <JobCard details={job} />
+            <JobCard details={job} key={idx} />
           ))}
         </div>
       </div>
