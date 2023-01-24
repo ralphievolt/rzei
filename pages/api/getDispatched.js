@@ -7,7 +7,7 @@ export default async (req, res) => {
 
     const jobs = await db
       .collection("jobs")
-      .find({ delivery_status: "Dispatched" })
+      .find({ delivery_status: { $ne: "Delivered" } })
       .toArray();
 
     res.json(jobs);

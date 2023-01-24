@@ -1,6 +1,6 @@
 "use client";
+
 import date from "date-and-time";
-import "../../app/globals.css";
 
 export default function JobCard({ details }) {
   return (
