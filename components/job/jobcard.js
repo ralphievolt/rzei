@@ -4,7 +4,7 @@ import date from "date-and-time";
 
 export default function JobCard({ details }) {
   return (
-    <div className="card  w-full md:w-96  h-fit bg-base-100 shadow-xl">
+    <div className="card  w-full md:w-96  h-fit bg-base-100 shadow-xl rounded ">
       <div className="card-body items-center text-center">
         <h1 className="text-xl font-semibold text-secondary ">
           {details.brand}
@@ -56,19 +56,23 @@ export default function JobCard({ details }) {
           </div>
         </div>
         <div className="flex flex-row  space-x-2 mt-2">
-          <div className="badge badge-secondary badge-outline badge-lg">
-            {details.receiver_machine_shop}
+          <div className="badge badge-secondary badge-outline badge-lg rounded ">
+            <span className={"text-gray-500"}>
+              {details.receiver_machine_shop}
+            </span>
           </div>
-          <div className="badge badge-outline badge-lg">
-            {details.receiver_vacforming}
+          <div className="badge badge-secondary badge-outline badge-lg rounded ">
+            <span className={"text-gray-500"}>
+              {details.receiver_vacforming}
+            </span>
           </div>
-          <div className="badge badge-accent  badge-outline badge-lg">
-            {details.delivery_status}
+          <div className="badge badge-secondary badge-outline badge-lg rounded ">
+            <span className={"text-gray-500"}> {details.delivery_status} </span>
           </div>
         </div>
 
         <button
-          className="btn btn-outline btn-secondary mt-4 btn-sm "
+          className="btn btn-secondary mt-4 btn-sm rounded"
           onClick={() => {
             alert("Functionality coming soon...");
           }}

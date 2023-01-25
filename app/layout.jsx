@@ -27,16 +27,22 @@ export default function RootLayout({ children }) {
               </label>
               <ul
                 tabIndex={0}
-                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 active:bg-secondary"
+                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 w-52"
               >
                 <li>
-                  <a href="/dispatch">Dispatch</a>
+                  <a href="/dispatch" className="active:bg-gray-300">
+                    Dispatch
+                  </a>
                 </li>
                 <li tabIndex={0}>
-                  <a href="/delivery">Delivery</a>
+                  <a href="/delivery" className="active:bg-gray-300">
+                    Delivery
+                  </a>
                 </li>
                 <li>
-                  <a href="/joblist">Jobs</a>
+                  <a href="/joblist" className="active:bg-gray-300">
+                    Jobs
+                  </a>
                 </li>
               </ul>
             </div>
@@ -50,13 +56,19 @@ export default function RootLayout({ children }) {
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
               <li>
-                <a href="/dispatch">Dispatch</a>
+                <a href="/dispatch" className="active:bg-gray-300">
+                  Dispatch
+                </a>
               </li>
               <li tabIndex={0}>
-                <a href="/delivery">Delivery</a>
+                <a href="/delivery" className="active:bg-gray-300">
+                  Delivery
+                </a>
               </li>
               <li>
-                <a href="/joblist">Jobs</a>
+                <a href="/joblist" className="active:bg-gray-300">
+                  Jobs
+                </a>
               </li>
             </ul>
           </div>
@@ -64,14 +76,14 @@ export default function RootLayout({ children }) {
             <input
               type="text"
               placeholder="Search...."
-              className="input w-full md:w-auto max-w-xs input-sm bg-base-200"
+              className="input w-full md:w-auto max-w-xs input-sm bg-base-200 rounded"
             />
           </div>
         </div>
         {children}
         <footer className="footer footer-center p-4 bg-base-300 text-base-content">
           <div>
-            <p>Copyright © 2023 - All right reserved by Model Shop</p>
+            <p>© 2023 - All right reserved by ModelShop SO Coordinator</p>
           </div>
         </footer>
       </body>

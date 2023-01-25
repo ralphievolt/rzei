@@ -32,50 +32,62 @@ export default function DispatchCard({ details }) {
   };
 
   return (
-    <div className="card  w-full md:w-96  h-fit bg-base-100 shadow-xl">
+    <div className="card  w-full md:w-96  h-fit bg-base-100 shadow-xl rounded">
       <div className="card-body items-center text-center">
         <h1 className="text-xl font-semibold text-secondary ">
           Enter Job Dispatch Information
         </h1>
         <div className="divider mt-0 mb-0"></div>
         <form onSubmit={handleSubmit(onSubmit)}>
+          <label className="label">
+            <span className="label-text">Job Number</span>
+          </label>
           <input
             type="number"
-            placeholder="Enter Job Number"
-            className="input input-bordered w-full max-w-xs mt-2 input-sm"
+            className="input input-bordered w-full md:w-full input-sm font-semibold rounded"
             {...register("job_number", { required: true, maxLength: 10 })}
           />
+          <label className="label">
+            <span className="label-text">Brand</span>
+          </label>
           <input
             type="text"
-            placeholder="Enter Brand"
-            className="input input-bordered w-full max-w-xs mt-2 input-sm"
+            className="input input-bordered w-full md:w-full input-sm font-semibold rounded"
             {...register("brand", { required: true, maxLength: 20 })}
           />
+          <label className="label">
+            <span className="label-text">Project Manager</span>
+          </label>
           <input
             type="text"
-            placeholder="Enter Project Manager"
-            className="input input-bordered w-full max-w-xs mt-2 input-sm"
+            className="input input-bordered w-full md:w-full  input-sm font-semibold rounded"
             {...register("project_manager", { required: true, maxLength: 12 })}
           />
+          <label className="label">
+            <span className="label-text">Model Maker</span>
+          </label>
           <input
             type="text"
-            placeholder="Enter Model Maker"
-            className="input input-bordered w-full max-w-xs mt-2 input-sm"
+            className="input input-bordered w-full md:w-full input-sm font-semibold rounded"
             {...register("model_maker", { required: true, maxLength: 12 })}
           />
+          <label className="label">
+            <span className="label-text">Delivery Percentage</span>
+          </label>
           <input
             type="number"
-            placeholder="Enter Delivery Percentage"
-            className="input input-bordered w-full max-w-xs mt-2 input-sm"
+            className="input input-bordered w-full md:w-full input-sm font-semibold rounded"
             {...register("delivery_percentage", {
               required: true,
               maxLength: 3,
             })}
           />
+          <label className="label">
+            <span className="label-text">Number of Vacform</span>
+          </label>
           <input
             type="number"
-            placeholder="Enter Number of Vacform"
-            className="input input-bordered w-full max-w-xs mt-2 input-sm"
+            className="input input-bordered w-full md:w-full input-sm font-semibold rounded"
             {...register("vacform_count", {
               required: true,
               maxLength: 3,
@@ -83,7 +95,7 @@ export default function DispatchCard({ details }) {
           />
           <button
             type="submit"
-            className="btn btn-outline btn-secondary btn-wide mt-4 btn-sm"
+            className="btn btn-outline btn-secondary btn-wide mt-4 btn-sm rounded"
             disabled={clicked}
           >
             Submit

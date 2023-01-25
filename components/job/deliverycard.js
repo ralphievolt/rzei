@@ -20,7 +20,7 @@ export default function DeliveryCard({ details }) {
   };
 
   return (
-    <div className="card  w-full md:w-96  h-fit bg-base-100 shadow-xl">
+    <div className="card  w-full md:w-96  h-fit bg-base-100 shadow-xl rounded">
       <div className="card-body items-center text-center">
         <h1 className="text-xl font-semibold text-secondary ">
           Delivery Transaction
@@ -77,43 +77,52 @@ export default function DeliveryCard({ details }) {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="flex flex-row  space-x-2">
             <div>
-              <label className="block text-sm ">Delivery Percentage</label>
+              <label className="block text-sm text-left">
+                Delivery Percentage
+              </label>
               <input
                 type="number"
-                className="input input-bordered w-full max-w-xs mt-2 input-sm  text-secondary"
+                className="input input-bordered w-full md:w-full mt-2 input-sm rounded text-secondary font-semibold"
                 {...register("delivery_percentage")}
               />
             </div>
             <div>
-              <label className="block text-sm ">Vacform Count</label>
+              <label className="block text-sm text-left">Vacform Count</label>
               <input
                 type="number"
-                className="input input-bordered w-full max-w-xs mt-2 input-sm  text-secondary"
+                className="input input-bordered w-full md:w-full mt-2 input-sm rounded   text-secondary font-semibold"
                 {...register("vacform_count")}
               />
             </div>
           </div>
-          <div className="flex flex-row  space-x-2">
+          <div className="flex flex-row  space-x-2 mt-2">
             <div>
-              <label className="block text-sm ">Machine Shop Receiver</label>
+              <label className="block text-sm text-left">
+                Machine Shop Receiver
+              </label>
               <input
                 type="text"
-                className="input input-bordered w-full max-w-xs mt-2 input-sm text-secondary"
+                className="input input-bordered w-full md:w-full mt-2 input-sm rounded  text-secondary font-semibold"
                 {...register("receiver_machine_shop")}
               />
             </div>
             <div>
-              <label className="block text-sm ">Vacforming Receiver</label>
+              <label className="block text-sm text-left">
+                Vacforming Receiver
+              </label>
               <input
                 type="text"
-                className="input input-bordered w-full max-w-xs mt-2 input-sm text-secondary"
+                className="input input-bordered w-full md:w-full mt-2 input-sm rounded text-secondary font-semibold"
                 {...register("receiver_vacforming")}
               />
             </div>
           </div>
           <div>
+            <label className="block text-sm mt-2 text-left">
+              Delivery Status
+            </label>
             <select
-              className="select select-bordered w-full max-w-xs mt-2 select-sm "
+              className="select select-bordered w-full md:w-full mt-2 select-sm text-secondary rounded"
               {...register("delivery_status")}
             >
               <option>For Delivery</option>
@@ -122,16 +131,18 @@ export default function DeliveryCard({ details }) {
               <option>Parts Withdrawn</option>
               <option>Parts Returned</option>
             </select>
-            <input
-              type="text"
-              placeholder="Remarks"
-              className="input input-bordered mt-2  w-full input-sm"
+
+            <label className="block text-sm mt-2 text-left mb-2">
+              Delivery Notes
+            </label>
+            <textarea
+              className="textarea textarea-bordered w-full md:w-full rounded font-semibold text-secondary"
               {...register("remarks")}
             />
 
             <button
               type="submit"
-              className="btn btn-outline btn-secondary mt-4 btn-sm"
+              className="btn  btn-secondary mt-4 btn-sm rounded "
               // disabled={clicked}
             >
               Click to scan QR Code
