@@ -24,7 +24,6 @@ export default function DispatchCard({ details }) {
       setClicked(false);
       reset((formValues) => ({
         ...formValues,
-        lastName: "test",
       }));
     } catch (errorMessage) {
       alert(errorMessage);

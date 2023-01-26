@@ -25,12 +25,12 @@ export default async (req, res) => {
       last_updated: new Date(),
       receiver_machine_shop: "",
       receiver_vacforming: "",
-      remarks: "",
+      delivery_notes: "",
       history: [
         {
           timestamp: new Date(),
           transaction: "Dispatched",
-          dispatch_by: "Emerson", // current user
+          by: "Emerson", // current user
         },
       ],
     });
