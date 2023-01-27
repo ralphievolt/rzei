@@ -3,7 +3,6 @@ import DeliveryCard from "@/components/job/deliverycard";
 async function getData() {
   let res = await fetch("http://localhost:3000/api/getDispatched");
 
-  console.log(res.json);
   return res.json();
 }
 

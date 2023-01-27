@@ -3,8 +3,12 @@
 import date from "date-and-time";
 import { useForm } from "react-hook-form";
 import React from "react";
+import { QrScanner } from "@yudiel/react-qr-scanner";
 
 export default function DeliveryCard({ details }) {
+  const [showModal, setShowModal] = React.useState("");
+  const [receiverId, setReceiverId] = React.useState("--------");
+
   const { register, handleSubmit } = useForm({
     defaultValues: {
       delivery_percentage: details.delivery_percentage,
@@ -16,22 +20,23 @@ export default function DeliveryCard({ details }) {
     },
   });
   const onSubmit = async (data) => {
-    data._id = details._id;
-    try {
-      let response = await fetch("http://localhost:3000/api/updateJob", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json",
-        },
-      });
-      response = await response.json();
+    setShowModal("modal-open");
+    // data._id = details._id;
+    // try {
+    //   let response = await fetch("http://localhost:3000/api/updateJob", {
+    //     method: "POST",
+    //     body: JSON.stringify(data),
+    //     headers: {
+    //       Accept: "application/json, text/plain, */*",
+    //       "Content-Type": "application/json",
+    //     },
+    //   });
+    //   response = await response.json();
 
-      alert("Job updated successfully");
-    } catch (errorMessage) {
-      alert(errorMessage);
-    }
+    //   alert("Job updated successfully");
+    // } catch (errorMessage) {
+    //   alert(errorMessage);
+    // }
   };
 
   return (
@@ -165,6 +170,48 @@ export default function DeliveryCard({ details }) {
           </div>
         </form>
       </div>
+      {showModal ? (
+        <div className={`modal ${showModal}`}>
+          <div className="modal-box w-5/6 md:w-80 max-w-5xl rounded">
+            <h3 className="font-bold text-lg">Scan QR Code Key</h3>
+            {/* <div className="relative p-6 flex-auto"> */}
+            <div className="space-y-4">
+              <p className="text-base leading-relaxed text-gray-500 ">
+                <QrScanner
+                  onDecode={(result) => setReceiverId(result)}
+                  onError={(error) => setReceiverId("-------")}
+                  ViewFinder={false}
+                />
+              </p>
+              <p className="text-base leading-relaxed text-purple-700 font-bold ">
+                {receiverId}
+              </p>
+            </div>
+            {/* </div> */}
+            <div className="flex items-center justify-center p-6 space-x-2 pb-0 ">
+              <button
+                className="btn  btn-secondary  btn-sm rounded "
+                onClick={() => setShowModal("")}
+              >
+                Machine Shop
+              </button>
+
+              <button className="btn btn-active btn-ghost btn-sm rounded ">
+                Vacforming
+              </button>
+            </div>
+
+            <div className="flex items-center justify-center p-6 space-x-2 pb-0 rounded">
+              <button
+                className="btn btn-wide btn-sm bg-gray-500 rounded"
+                onClick={() => setShowModal("")}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
