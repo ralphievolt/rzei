@@ -8,6 +8,7 @@ import { QrScanner } from "@yudiel/react-qr-scanner";
 export default function DeliveryCard({ details }) {
   const [showModal, setShowModal] = React.useState("");
   const [receiverId, setReceiverId] = React.useState("--------");
+  const [receiver, setReceiver] = React.useState(false);
 
   const { register, handleSubmit } = useForm({
     defaultValues: {
@@ -21,7 +22,19 @@ export default function DeliveryCard({ details }) {
   });
   const onSubmit = async (data) => {
     setShowModal("modal-open");
-    // data._id = details._id;
+
+    const history = {
+      timestamp: new Date(),
+      transaction: await data.delivery_status,
+      area: receiver ? "Vacforming" : "Machine Shop",
+      by: "current user",
+    };
+
+    data._id = details._id;
+    data.history = history;
+
+    console.log(data);
+
     // try {
     //   let response = await fetch("http://localhost:3000/api/updateJob", {
     //     method: "POST",
@@ -37,6 +50,11 @@ export default function DeliveryCard({ details }) {
     // } catch (errorMessage) {
     //   alert(errorMessage);
     // }
+  };
+
+  const onQrCodeScan = (result) => {
+    setReceiverId(result);
+    setShowModal("");
   };
 
   return (
@@ -143,13 +161,13 @@ export default function DeliveryCard({ details }) {
             </label>
             <select
               className="select select-bordered w-full md:w-full mt-2 select-sm text-secondary rounded"
-              {...register("delivery_notes")}
+              {...register("delivery_status")}
             >
-              <option>For Delivery</option>
-              <option>Dispatched</option>
               <option>Delivered</option>
-              <option>Parts Withdrawn</option>
+              <option>Delivered-Partial</option>
+              <option>Dispatched</option>
               <option>Parts Returned</option>
+              <option>Parts Withdrawn</option>
             </select>
 
             <label className="block text-sm mt-2 text-left mb-2">
@@ -160,12 +178,26 @@ export default function DeliveryCard({ details }) {
               {...register("delivery_notes")}
             />
 
+            <div className="flex flex-col">
+              <div className="form-control w-full">
+                <label className="cursor-pointer label">
+                  <span className="label-text">
+                    Receiver : {receiver ? " Vacforming" : " Machine Shop"}
+                  </span>
+                  <input
+                    type="checkbox"
+                    className="toggle toggle-secondary toggle-small"
+                    checked={receiver}
+                    onChange={() => setReceiver(!receiver)}
+                  />
+                </label>
+              </div>
+            </div>
             <button
               type="submit"
               className="btn  btn-secondary mt-4 btn-sm rounded "
-              // disabled={clicked}
             >
-              Click to scan QR Code
+              Scan QR Code Key
             </button>
           </div>
         </form>
@@ -173,37 +205,30 @@ export default function DeliveryCard({ details }) {
       {showModal ? (
         <div className={`modal ${showModal}`}>
           <div className="modal-box w-5/6 md:w-80 max-w-5xl rounded">
-            <h3 className="font-bold text-lg">Scan QR Code Key</h3>
-            {/* <div className="relative p-6 flex-auto"> */}
-            <div className="space-y-4">
-              <p className="text-base leading-relaxed text-gray-500 ">
-                <QrScanner
-                  onDecode={(result) => setReceiverId(result)}
-                  onError={(error) => setReceiverId("-------")}
-                  ViewFinder={false}
-                />
-              </p>
-              <p className="text-base leading-relaxed text-purple-700 font-bold ">
-                {receiverId}
-              </p>
+            <h3 className="font-bold text-lg mb-2">Scan QR Code Key</h3>
+            <div className="relative p-6 flex-auto">
+              <div className="space-y-4">
+                <p className="text-base leading-relaxed text-gray-500 ">
+                  <QrScanner
+                    onDecode={(result) => {
+                      onQrCodeScan(result);
+                    }}
+                    onError={(error) => {
+                      alert("Something wrong in scanning your QR Code");
+                      setReceiverId("-------");
+                    }}
+                    ViewFinder={false}
+                  />
+                </p>
+                <p className="text-base leading-relaxed text-purple-700 font-bold ">
+                  {receiverId}
+                </p>
+              </div>
             </div>
-            {/* </div> */}
+
             <div className="flex items-center justify-center p-6 space-x-2 pb-0 ">
               <button
-                className="btn  btn-secondary  btn-sm rounded "
-                onClick={() => setShowModal("")}
-              >
-                Machine Shop
-              </button>
-
-              <button className="btn btn-active btn-ghost btn-sm rounded ">
-                Vacforming
-              </button>
-            </div>
-
-            <div className="flex items-center justify-center p-6 space-x-2 pb-0 rounded">
-              <button
-                className="btn btn-wide btn-sm bg-gray-500 rounded"
+                className="btn btn-active btn-ghost btn-sm btn-wide rounded"
                 onClick={() => setShowModal("")}
               >
                 Cancel

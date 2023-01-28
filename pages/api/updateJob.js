@@ -12,6 +12,7 @@ export default async (req, res) => {
       receiver_vacforming,
       delivery_status,
       delivery_notes,
+      history,
       _id,
     } = req.body;
 
@@ -29,13 +30,10 @@ export default async (req, res) => {
           receiver_vacforming: receiver_vacforming,
           delivery_status: delivery_status,
           delivery_notes: delivery_notes,
+          last_updated: new Date(),
         },
         $push: {
-          history: {
-            timestamp: new Date(),
-            transaction: "delivery_status",
-            by: "Emerson", // current user
-          },
+          history: history,
         },
       }
     );

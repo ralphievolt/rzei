@@ -30,6 +30,7 @@ export default async (req, res) => {
         {
           timestamp: new Date(),
           transaction: "Dispatched",
+          area: "Model Shop",
           by: "Emerson", // current user
         },
       ],
