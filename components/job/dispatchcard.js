@@ -4,7 +4,13 @@ import { useForm } from "react-hook-form";
 import React from "react";
 
 export default function DispatchCard({ details }) {
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState,
+    formState: { isSubmitSuccessful },
+  } = useForm();
   const [clicked, setClicked] = React.useState(false);
 
   const onSubmit = async (data) => {
@@ -29,6 +35,19 @@ export default function DispatchCard({ details }) {
       alert(errorMessage);
     }
   };
+
+  React.useEffect(() => {
+    if (formState.isSubmitSuccessful) {
+      reset({
+        job_number: "",
+        brand: "",
+        project_manager: "",
+        model_maker: "",
+        delivery_percentage: "",
+        vacform_count: "",
+      });
+    }
+  }, [formState, reset]);
 
   return (
     <div className="card  w-full md:w-96  h-fit bg-base-100 shadow-xl rounded">

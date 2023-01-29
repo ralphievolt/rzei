@@ -32,7 +32,7 @@ export default function DeliveryCard({ details }) {
 
   React.useEffect(() => {
     if (formState.isSubmitSuccessful) {
-      reset({ something: "" });
+      reset();
     }
   }, [formState, reset]);
 
