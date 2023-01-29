@@ -83,7 +83,7 @@ export default function RootLayout({ children }) {
         {children}
         <footer className="footer footer-center p-4 bg-base-300 text-base-content">
           <div>
-            <p>© 2023 - All right reserved by ModelShop SO Coordinator</p>
+            <p>© 2023 - All right reserved by ModelShop Coordinator</p>
           </div>
         </footer>
       </body>

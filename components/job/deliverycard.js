@@ -4,13 +4,22 @@ import date from "date-and-time";
 import { useForm } from "react-hook-form";
 import React from "react";
 import { QrScanner } from "@yudiel/react-qr-scanner";
+import { useRouter } from "next/navigation";
 
 export default function DeliveryCard({ details }) {
   const [showModal, setShowModal] = React.useState("");
   const [receiverId, setReceiverId] = React.useState("--------");
   const [receiver, setReceiver] = React.useState(false);
+  const [updatedData, setUpdatedDate] = React.useState(details);
+  const router = useRouter();
 
-  const { register, handleSubmit } = useForm({
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState,
+    formState: { isSubmitSuccessful },
+  } = useForm({
     defaultValues: {
       delivery_percentage: details.delivery_percentage,
       vacform_count: details.vacform_count,
@@ -20,6 +29,13 @@ export default function DeliveryCard({ details }) {
       delivery_notes: details.delivery_notes,
     },
   });
+
+  React.useEffect(() => {
+    if (formState.isSubmitSuccessful) {
+      reset({ something: "" });
+    }
+  }, [formState, reset]);
+
   const onSubmit = async (data) => {
     setShowModal("modal-open");
 
@@ -35,21 +51,22 @@ export default function DeliveryCard({ details }) {
 
     console.log(data);
 
-    // try {
-    //   let response = await fetch("http://localhost:3000/api/updateJob", {
-    //     method: "POST",
-    //     body: JSON.stringify(data),
-    //     headers: {
-    //       Accept: "application/json, text/plain, */*",
-    //       "Content-Type": "application/json",
-    //     },
-    //   });
-    //   response = await response.json();
+    try {
+      let response = await fetch("http://localhost:3000/api/updateJob", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+        },
+      });
+      response = await response.json();
 
-    //   alert("Job updated successfully");
-    // } catch (errorMessage) {
-    //   alert(errorMessage);
-    // }
+      alert("Job updated successfully");
+      router.refresh();
+    } catch (errorMessage) {
+      alert(errorMessage);
+    }
   };
 
   const onQrCodeScan = (result) => {
@@ -211,7 +228,9 @@ export default function DeliveryCard({ details }) {
                 <p className="text-base leading-relaxed text-gray-500 ">
                   <QrScanner
                     onDecode={(result) => {
-                      onQrCodeScan(result);
+                      setReceiverId(result);
+
+                      onQrCodeScan();
                     }}
                     onError={(error) => {
                       alert("Something wrong in scanning your QR Code");
