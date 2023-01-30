@@ -113,7 +113,7 @@ export default function DispatchCard({ details }) {
           />
           <button
             type="submit"
-            className="btn  btn-secondary btn-wide mt-4 btn-sm rounded"
+            className="btn btn-secondary btn-wide mt-4 btn-sm rounded"
             disabled={clicked}
           >
             Submit
