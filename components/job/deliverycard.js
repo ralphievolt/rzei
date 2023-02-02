@@ -10,7 +10,7 @@ export default function DeliveryCard({ details }) {
   const [showModal, setShowModal] = React.useState("");
   const [receiverId, setReceiverId] = React.useState("--------");
   const [receiver, setReceiver] = React.useState(false);
-  const [updatedData, setUpdatedDate] = React.useState(details);
+  const [updatedData, setUpdatedData] = React.useState(details);
   const router = useRouter();
 
   const {
@@ -37,19 +37,24 @@ export default function DeliveryCard({ details }) {
   }, [formState, reset]);
 
   const onSubmit = async (data) => {
+    setUpdatedData(data);
     setShowModal("modal-open");
+  };
+
+  const onQrCodeScan = async (result) => {
+    setReceiverId(result);
+
+    let data = updatedData;
 
     const history = {
       timestamp: new Date(),
-      transaction: await data.delivery_status,
+      transaction: data.delivery_status,
       area: receiver ? "Vacforming" : "Machine Shop",
       by: "current user",
     };
 
     data._id = details._id;
     data.history = history;
-
-    console.log(data);
 
     try {
       let response = await fetch("http://localhost:3000/api/updateJob", {
@@ -63,15 +68,11 @@ export default function DeliveryCard({ details }) {
       response = await response.json();
 
       alert("Job updated successfully");
+      setShowModal("");
       router.refresh();
     } catch (errorMessage) {
       alert(errorMessage);
     }
-  };
-
-  const onQrCodeScan = (result) => {
-    setReceiverId(result);
-    setShowModal("");
   };
 
   return (
@@ -233,8 +234,8 @@ export default function DeliveryCard({ details }) {
                       onQrCodeScan();
                     }}
                     onError={(error) => {
-                      alert("Something wrong in scanning your QR Code");
-                      setReceiverId("-------");
+                      setReceiverId("Scanning error...");
+                      // setReceiverId("-------");
                     }}
                     ViewFinder={false}
                   />
