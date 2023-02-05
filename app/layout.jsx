@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
                   </a>
                 </li>
                 <li tabIndex={0}>
-                  <a href="/delivery" className="active:bg-gray-300">
+                  <a href="/for-delivery" className="active:bg-gray-300">
                     Delivery
                   </a>
                 </li>
@@ -61,7 +61,7 @@ export default function RootLayout({ children }) {
                 </a>
               </li>
               <li tabIndex={0}>
-                <a href="/delivery" className="active:bg-gray-300">
+                <a href="/for-delivery" className="active:bg-gray-300">
                   Delivery
                 </a>
               </li>

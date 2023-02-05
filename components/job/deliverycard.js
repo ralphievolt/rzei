@@ -1,8 +1,8 @@
 "use client";
+import React from "react";
 
 import date from "date-and-time";
 import { useForm } from "react-hook-form";
-import React from "react";
 import { QrScanner } from "@yudiel/react-qr-scanner";
 import { useRouter } from "next/navigation";
 

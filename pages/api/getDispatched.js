@@ -10,7 +10,7 @@ export default async (req, res) => {
       .find({ delivery_status: { $ne: "Delivered" } })
       .toArray();
 
-    res.json(jobs);
+    return res.json(jobs);
   } catch (e) {
     console.error(e);
     throw new Error(e).message;
