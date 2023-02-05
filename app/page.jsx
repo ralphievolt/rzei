@@ -19,9 +19,9 @@ export default function Home() {
             importantly, we enjoy making your transactions more efficient!
           </p>
           <div className="divider" />
-          {/* 
-          <div class="space-y-4">
-            <h2 class="text-xl text-secondary text-center">
+
+          {/* <div className="space-y-4">
+            <h2 className="text-xl text-secondary text-center">
               Enter email to start
             </h2>
             <div className="input-group"></div>
@@ -30,8 +30,8 @@ export default function Home() {
               className="input input-bordered w-2/3 md:w-2/3 font-semibold  "
             />
             <button className="btn btn-secondary">Button</button>
-          </div> */}
-          <h2 class="text-xl text-secondary text-center mb-3">
+          </div> *
+          <h2 className="text-xl text-secondary text-center mb-3">
             Enter email to start
           </h2>
           <div className="form-control">
@@ -43,7 +43,7 @@ export default function Home() {
               />
               <button className="btn btn-secondary">Go</button>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

@@ -25,7 +25,6 @@ async function getJobsForDelivery() {
 export default async function JobsForDelivery() {
   const jobs = await getJobsForDelivery();
 
-  console.log(jobs);
   if (jobs.length === 0)
     return (
       <div className="max-w-md">
