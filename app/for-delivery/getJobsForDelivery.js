@@ -16,7 +16,7 @@ async function getJobsForDelivery() {
       .toArray();
 
     // return { jobs_for_delivery: jobs };
-    return jobs;
+    return JSON.parse(JSON.stringify(jobs));
   } catch (e) {
     return { error: "Failed to fetch jobs for delivery" };
   }
